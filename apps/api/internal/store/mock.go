@@ -40,6 +40,9 @@ func NewMockStore() *MockStore {
 		contracts:  make(map[string]Contract),
 		syncStates: make(map[string]SyncState),
 		monitored:  make(map[string]MonitoredContract),
+		watchlist:  make(map[string]map[string]bool),
+		alerts:     make([]ContractAlert, 0),
+		alertSubscriptions: make([]AlertSubscription, 0),
 	}
 }
 
@@ -135,6 +138,10 @@ func (m *MockStore) GetGlobalStats(_ context.Context) (GlobalStats, error) {
 func (m *MockStore) SetGlobalStats(gs GlobalStats) {
 	m.globalStats = gs
 }
+
+func (m *MockStore) CreateNextMonthPartition(_ context.Context) error { return nil }
+
+func (m *MockStore) CreateMonthlyPartitionIfNotExists(_ context.Context, _ int, _ int) error { return nil }
 
 // ---- store.QueryStore -------------------------------------------------------
 
