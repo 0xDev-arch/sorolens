@@ -683,3 +683,11 @@ func (p *MockPinger) Ping(_ context.Context) error {
 	}
 	return nil
 }
+
+func (m *MockStore) ComputeAndStoreBaselines(ctx context.Context, snapshotDate time.Time) error {
+	return nil
+}
+
+func (m *MockStore) CheckAndEmitRegressions(ctx context.Context, snapshotDate time.Time) (int, error) {
+	return 0, nil
+}
