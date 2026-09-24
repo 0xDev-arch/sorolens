@@ -20,6 +20,7 @@ type FullStore interface {
 	APIKeyStore
 	AlertSubscriptionStore
 	WatchlistStore
+	UserStore
 }
 
 // NewFullStore returns a FullStore backed by the given pool.
